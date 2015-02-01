@@ -21,6 +21,7 @@ function zmen_hodnotu_check()
 	var check = document.getElementById("hybrid").checked;
 	if(check==true) document.getElementById("hybrid").checked=false;
 	else document.getElementById("hybrid").checked=true;
+	zmaz_vysledok();
 }
 
 function otvor_popis(nazov)
