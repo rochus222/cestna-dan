@@ -7,9 +7,9 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Sudoku</name>
+    <name>Daň z motorových vozidiel</name>
     <description>
-        Sudoku for Android
+        Aplikácia na výpočet dane z motorových vozidiel.
     </description>
 
     <author href="https://palikogler.sk" email="pavolkogler@gmail.com">
