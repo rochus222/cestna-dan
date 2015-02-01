@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<meta name="viewport" content="width=device-width, height=device-height">
+		<title>Výpočet dane z motorových vozidiel</title>
+		<meta name="keywords" content="Výpočet dane, daň z motorových vozidiel, osobné vozidlo, úžitkové vozidlo, výpočet, daň"/>
+		<link rel="SHORTCUT ICON" href="favicon.ico" />
+		<meta name="author" content="Pali Kogler"/>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<link rel="SHORTCUT ICON" href="favicon.ico" />
+		<script src="js/js.js"></script>
+	</head>
+	<body>
+		<h1>Daň z motorových vozidiel</h1>
+		<div id="wrapper">	
+			<h3><a onClick="otvor_popis('typ_popis');">Typ vozidla &dArr;</a></h3>
+			<select name="typ_vozidla" id="typ_vozidla" onChange="zmaz_vysledok(); vypis_formular_vozidla();">
+				<option value="osobne-vozidlo" selected>Osobne vozidlo</option>
+				<option value="uzitkove-vozidlo">Úžitkové vozidlo</option>
+				<option value="elektromobil">Elektromobil</option>
+			</select>
+			<div id="typ_popis" class="nezobrazeny margin-dole">
+			<b>Osobné vozidlo</b> - vozidlo kategórie L a M1<br /><br />
+			<b>Úžitkové vozidlo</b> - vozidlo kategórie M2, M3, N1 až N3, O1 až O4<br /><br />
+			<b>Elektromobil</b> - vozidlo, ktorého jediným zdrojom energie je elektrina<br /><br />
+			</div>
+			<div id="osobne-vozidlo" class="zobrazeny">
+			<h3>Zdvihový objem valcov motora v cm&#179;</h3>
+			<select name="objem_valcov" id="objem_valcov" onChange="zmaz_vysledok();">
+				<option value="150" selected>do 150</option>
+				<option value="900">150 - 900</option>
+				<option value="1200">900 - 1200</option>
+				<option value="1500">1200 - 1500</option>
+				<option value="2000">1500 - 2000</option>
+				<option value="3000">2000 - 3000</option>
+				<option value="4000">nad 3000</option>
+			</select>
+			</div>
+			<div id="uzitkove-vozidlo" class="nezobrazeny">
+			<h3>Počet náprav</h3>
+			<select name="pocet_naprav" id="pocet_naprav" onChange="zmaz_vysledok(); zmen_pripustnu_hmotnost();">
+				<option value="2" selected>1 alebo 2 napravy</option>
+				<option value="3">3 nápravy</option>
+				<option value="4">4 a viac náprav</option>
+			</select>
+				<div id="2_napravy" class="zobrazeny">
+				<h3>Celková hmotnosť alebo najvyššia prípustná celková hmotnosť v tonách</h3>
+				<select name="2_hmotnost" id="2_hmotnost" onChange="zmaz_vysledok();">
+					<option value="1" selected>do 1</option>
+					<option value="2">1 - 2</option>
+					<option value="4">2 - 4</option>
+					<option value="6">4 - 6</option>
+					<option value="8">6 - 8</option>
+					<option value="10">8 - 10</option>
+					<option value="12">10 - 12</option>
+					<option value="14">12 - 14</option>
+					<option value="16">14 - 16</option>
+					<option value="18">16 - 18</option>
+					<option value="20">18 - 20</option>
+					<option value="22">20 - 22</option>
+					<option value="24">22 - 24</option>
+					<option value="26">24 - 26</option>
+					<option value="28">26 - 28</option>
+					<option value="30">28 - 30</option>
+					<option value="32">nad 30</option>
+				</select>
+				</div>
+				<div id="3_napravy" class="nezobrazeny">
+				<h3>Celková hmotnosť alebo najvyššia prípustná celková hmotnosť v tonách</h3>
+				<select name="3_hmotnost" id="3_hmotnost" onChange="zmaz_vysledok();">
+					<option value="15" selected>do 15</option>
+					<option value="17">15 - 17</option>
+					<option value="19">17 - 19</option>
+					<option value="21">19 - 21</option>
+					<option value="23">21 - 23</option>
+					<option value="25">23 - 25</option>
+					<option value="27">25 - 27</option>
+					<option value="29">27 - 29</option>
+					<option value="31">29 - 31</option>
+					<option value="33">31 - 33</option>
+					<option value="35">33 - 35</option>
+					<option value="37">35 - 37</option>
+					<option value="40">37 - 40</option>
+					<option value="42">nad 40</option>
+				</select>
+				</div>
+				<div id="4_napravy" class="nezobrazeny">
+				<h3>Celková hmotnosť alebo najvyššia prípustná celková hmotnosť v tonách</h3>
+				<select name="4_hmotnost" id="4_hmotnost" onChange="zmaz_vysledok();">
+					<option value="23" selected>do 23</option>
+					<option value="25">23 - 25</option>
+					<option value="27">25 - 27</option>
+					<option value="29">27 - 29</option>
+					<option value="31">29 - 31</option>
+					<option value="33">31 - 33</option>
+					<option value="35">33 - 35</option>
+					<option value="37">35 - 37</option>
+					<option value="40">37 - 40</option>
+					<option value="42">nad 40</option>
+				</select>
+				</div>
+			</div>
+			<div id="elektromobil" class="nezobrazeny">
+			</div>
+			<h3>Dátum prvej evidencie vozidla</h3>
+			<table width="100%">
+				<tr>
+					<td width="50%">
+						<select name="mesiac" id="mesiac" onChange="zmaz_vysledok();">
+							<option value="1" selected>Január</option>
+							<option value="2" >Február</option>
+							<option value="3" >Marec</option>
+							<option value="4" >Apríl</option>
+							<option value="5" >Máj</option>
+							<option value="6" >Jún</option>
+							<option value="7" >Júl</option>
+							<option value="8" >August</option>
+							<option value="9" >September</option>
+							<option value="10" >Október</option>
+							<option value="11" >November</option>
+							<option value="12" >December</option>
+						</select>
+					</td>
+					<td width="50%">
+						<select name="rok" id="rok" onChange="zmaz_vysledok();">
+							<option value="2015" selected>2015</option>
+							<option value="2014" >2014</option>
+							<option value="2013" >2013</option>
+							<option value="2012" >2012</option>
+							<option value="2011" >2011</option>
+							<option value="2010" >2010</option>
+							<option value="2009" >2009</option>
+							<option value="2008" >2008</option>
+							<option value="2007" >2007</option>
+							<option value="2006" >2006</option>
+							<option value="2005" >2005</option>
+							<option value="2004" >2004</option>
+							<option value="2003" >2003</option>
+							<option value="2002" >2002</option>
+							<option value="2001" >2001 a menej</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<h3><input type="checkbox" id="hybrid" name="hybrid" value="1" onChange="zmaz_vysledok();"/><a onClick="zmen_hodnotu_check();"> Hybridne vozidlo, CNG, LNG, vodíkový pohon (-50%)</a></h3>
+			<h3><a onClick="otvor_popis('konecny_datum');" id="konecny_datum_a">Výpočet k 31.12.2015 &dArr;</a></h3>
+			<div id="konecny_datum" class="nezobrazeny">
+				<table width="100%">
+					<tr>
+						<td width="50%">
+							<select name="mesiac" id="konecny_mesiac" onChange="zmaz_vysledok(); zmen_konecny_datum();">
+								<option value="1" >Január</option>
+								<option value="2" >Február</option>
+								<option value="3" >Marec</option>
+								<option value="4" >Apríl</option>
+								<option value="5" >Máj</option>
+								<option value="6" >Jún</option>
+								<option value="7" >Júl</option>
+								<option value="8" >August</option>
+								<option value="9" >September</option>
+								<option value="10" >Október</option>
+								<option value="11" >November</option>
+								<option value="12" selected>December</option>
+							</select>
+						</td>
+						<td width="50%">
+							<select name="rok" id="konecny_rok" onChange="zmaz_vysledok(); zmen_konecny_datum();">
+								<option value="2016" >2016</option>
+								<option value="2015" selected>2015</option>
+								<option value="2014" >2014</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<button onClick="vypocitaj();">Vypočítať daň</button>
+			<div id="vysledok">&nbsp;
+			</div>
+			<p><br />*Výpočet dane je len informatívny. Autor nenesie žiadnu zodpovednosť za správnosť výsledku a prípadné škody spôsobené nesprávnym určením výšky dane.<br /><br /></p>
+			<p align="center">© 2015 <b><a href="http://www.palikogler.sk/" target="_blank">Pavol Kögler</a></b> | All bugs reserved</p>
+		</div>
+		<a onClick="zrus_reklamu();"><div id="clona"></div></a>
+		<div id="vyskoc">
+			<h3 align="center">Ak sa Vám táto webová aplikácia páči, podporte autora kliknutím na Google reklamu. Ďakujeme za Vašu podporu.</h3>
+			<p align="center"><img src="vyskoc.png" width="500px" height="500px" /></p>
+			<h3 align="center"><a onClick="zrus_reklamu();">ZAVRIEŤ REKLAMU</a></h3>
+		</div>
+	</body>
+</html>
