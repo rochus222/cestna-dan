@@ -7,13 +7,42 @@
 		<meta name="keywords" content="Výpočet dane, daň z motorových vozidiel, osobné vozidlo, úžitkové vozidlo, výpočet, daň"/>
 		<link rel="SHORTCUT ICON" href="favicon.ico" />
 		<meta name="author" content="Pali Kogler"/>
+		<script src="phonegap.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<link rel="SHORTCUT ICON" href="favicon.ico" />
 		<script src="js/js.js"></script>
+		<script type="text/javascript" charset="utf-8">
+            function onLoad()
+            {
+                  document.addEventListener("deviceready", onDeviceReady, true);
+            }
+			
+			function onDeviceReady() {
+				// Register the event listener
+				document.addEventListener("backbutton", onBackKeyDown, false);
+			}
+			
+            function exitFromApp()
+             {
+                navigator.app.exitApp();
+             }
+
+			 function onBackKeyDown()
+			 {
+				ukonciappku();
+			 }
+			 function ukonciappku()
+			 {
+				var answer = confirm("Ukončiť prácu s Daň z motorových vozidiel?")
+				if (answer){
+					navigator.app.exitApp();
+				}
+			 }
+        </script>
 	</head>
-	<body>
+	<body onload="onLoad();">
 		<h1>Daň z motorových vozidiel</h1>
 		<div id="wrapper">	
 			<h3><a onClick="otvor_popis('typ_popis');">Typ vozidla &dArr;</a></h3>
@@ -179,14 +208,8 @@
 			<button onClick="vypocitaj();">Vypočítať daň</button>
 			<div id="vysledok">&nbsp;
 			</div>
-			<p><br />*Výpočet dane je len informatívny. Autor nenesie žiadnu zodpovednosť za správnosť výsledku a prípadné škody spôsobené nesprávnym určením výšky dane.<br /><br /></p>
+			<p><br />*Výpočet dane je len informatívny. Autor nenesie žiadnu zodpovednosť za správnosť výsledku a prípadné škody spôsobené nesprávnym určením výšky dane. Výsledky konzultujte so svojim daňovým poradcom.<br /><br /></p>
 			<p align="center">© 2015 <b><a href="http://www.palikogler.sk/" target="_blank">Pavol Kögler</a></b> | All bugs reserved</p>
-		</div>
-		<a onClick="zrus_reklamu();"><div id="clona"></div></a>
-		<div id="vyskoc">
-			<h3 align="center">Ak sa Vám táto webová aplikácia páči, podporte autora kliknutím na Google reklamu. Ďakujeme za Vašu podporu.</h3>
-			<p align="center"><img src="vyskoc.png" width="500px" height="500px" /></p>
-			<h3 align="center"><a onClick="zrus_reklamu();">ZAVRIEŤ REKLAMU</a></h3>
 		</div>
 	</body>
 </html>
